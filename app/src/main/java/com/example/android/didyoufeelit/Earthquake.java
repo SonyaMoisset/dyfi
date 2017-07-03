@@ -1,4 +1,4 @@
-package com.example.android.quakereport;
+package com.example.android.didyoufeelit;
 
 public class Earthquake {
 
@@ -26,5 +26,7 @@ public class Earthquake {
         return mTimeInMilliseconds;
     }
 
-    public String getUrl() { return mUrl;}
+    public String getUrl() {
+        return mUrl;
+    }
 }
