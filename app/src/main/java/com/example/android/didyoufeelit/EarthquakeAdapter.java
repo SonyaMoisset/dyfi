@@ -1,4 +1,4 @@
-package com.example.android.quakereport;
+package com.example.android.didyoufeelit;
 
 import android.content.Context;
 import android.graphics.drawable.GradientDrawable;
@@ -16,7 +16,7 @@ import java.util.List;
 
 public class EarthquakeAdapter extends ArrayAdapter<Earthquake> {
 
-    private static final String LOCATION_SEPARATOR = " of ";
+    private static final String LOCATION_SEPARATOR = " of";
 
     public EarthquakeAdapter(Context context, List<Earthquake> earthquakes) {
         super(context, 0, earthquakes);
@@ -24,7 +24,6 @@ public class EarthquakeAdapter extends ArrayAdapter<Earthquake> {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-
         View listItemView = convertView;
 
         if (listItemView == null) {
@@ -42,7 +41,6 @@ public class EarthquakeAdapter extends ArrayAdapter<Earthquake> {
         int magnitudeColor = getMagnitudeColor(currentEarthquake.getMagnitude());
         magnitudeCircle.setColor(magnitudeColor);
 
-
         String originalLocation = currentEarthquake.getLocation();
         String primaryLocation;
         String locationOffset;
@@ -56,15 +54,13 @@ public class EarthquakeAdapter extends ArrayAdapter<Earthquake> {
             primaryLocation = originalLocation;
         }
 
-        TextView locationOffsetView = (TextView) listItemView.findViewById(R.id.location_offset);
-        locationOffsetView.setText(locationOffset);
-
         TextView primaryLocationView = (TextView) listItemView.findViewById(R.id.primary_location);
         primaryLocationView.setText(primaryLocation);
 
+        TextView locationOffsetView = (TextView) listItemView.findViewById(R.id.location_offset);
+        locationOffsetView.setText(locationOffset);
 
         Date dateObject = new Date(currentEarthquake.getTimeInMilliseconds());
-
         TextView dateView = (TextView) listItemView.findViewById(R.id.date);
         String formattedDate = formatDate(dateObject);
         dateView.setText(formattedDate);
@@ -113,11 +109,12 @@ public class EarthquakeAdapter extends ArrayAdapter<Earthquake> {
                 magnitudeColorResourceId = R.color.magnitude10plus;
                 break;
         }
+
         return ContextCompat.getColor(getContext(), magnitudeColorResourceId);
     }
 
     private String formatMagnitude(double magnitude) {
-        DecimalFormat magnitudeFormat = new DecimalFormat(("0.0"));
+        DecimalFormat magnitudeFormat = new DecimalFormat("0.0");
         return magnitudeFormat.format(magnitude);
     }
 
@@ -128,6 +125,6 @@ public class EarthquakeAdapter extends ArrayAdapter<Earthquake> {
 
     private String formatTime(Date dateObject) {
         SimpleDateFormat timeFormat = new SimpleDateFormat("h:mm a");
-        return timeFormat.format(dateObject);
+        return  timeFormat.format(dateObject);
     }
 }
